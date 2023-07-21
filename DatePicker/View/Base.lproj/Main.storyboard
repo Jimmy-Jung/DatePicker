@@ -97,6 +97,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="디데이" id="HRW-cO-e4k">
+                        <barButtonItem key="backBarButtonItem" title="뒤로가기" id="Ic6-6d-zbe"/>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="RaY-pZ-dnv">
                             <connections>
                                 <action selector="plusButtonTapped:" destination="BYZ-38-t0r" id="AaX-Fq-B8T"/>

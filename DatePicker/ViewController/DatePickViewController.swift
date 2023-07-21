@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DatePickViewController: UIViewController {
 
@@ -41,26 +42,17 @@ class DatePickViewController: UIViewController {
         datePicker.preferredDatePickerStyle = .inline
         dateChooserAlert.view.addSubview(datePicker)
         
-        let cancelAction = UIAlertAction(title: "선택 완료",style: .cancel) {_ in
+        datePicker.snp.makeConstraints { make in
+            make.leading.top.trailing.equalTo(dateChooserAlert.view).inset(20)
+            make.bottom.equalTo(dateChooserAlert.view).inset(80)
+        }
+        
+        let cancelAction = UIAlertAction(title: "선택 완료",style: .cancel) { _ in
             self.date = datePicker.date
             self.dDayLabel.text = Date.makeD_Day(date: self.date)
             sender.titleLabel?.text = Date.makeCalendar(date: self.date)
-            
-            
         }
         dateChooserAlert.addAction(cancelAction)
-        
-        // 데이트 피커 높이 설정
-        let height : NSLayoutConstraint = NSLayoutConstraint(
-            item: dateChooserAlert.view as Any,
-            attribute: .height,
-            relatedBy: .equal,
-            toItem: nil,
-            attribute: .notAnAttribute,
-            multiplier: 1.2,
-            constant: 380
-        )
-        dateChooserAlert.view.addConstraint(height)
         
         present(dateChooserAlert, animated: true)
     }
